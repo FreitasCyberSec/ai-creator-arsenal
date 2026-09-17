@@ -29,26 +29,28 @@ clone_or_update() {
 # Núcleo ComfyUI
 clone_or_update "https://github.com/Comfy-Org/ComfyUI.git" "ComfyUI"
 clone_or_update "https://github.com/Comfy-Org/ComfyUI-Manager.git" "ComfyUI-Manager"
-clone_or_update "https://github.com/cubiq/ComfyUI_essentials.git" "ComfyUI_essentials"
 
 # Identidade / consistência facial
-clone_or_update "https://github.com/cubiq/ComfyUI_InstantID.git" "ComfyUI_InstantID"
-clone_or_update "https://github.com/cubiq/PuLID_ComfyUI.git" "PuLID_ComfyUI"
+clone_or_update "https://github.com/balazik/ComfyUI-PuLID-Flux.git" "ComfyUI-PuLID-Flux"
 clone_or_update "https://github.com/facefusion/facefusion.git" "facefusion"
 
 # Imagem / vídeo
 clone_or_update "https://github.com/SciensOne/comfyui-workflow-generator.git" "comfyui-workflow-generator"
-clone_or_update "https://github.com/iqgeoai/ComfyUI-vidflows.git" "ComfyUI-vidflows"
 clone_or_update "https://github.com/kijai/ComfyUI-WanVideoWrapper.git" "ComfyUI-WanVideoWrapper"
 clone_or_update "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git" "ComfyUI-VideoHelperSuite"
+clone_or_update "https://github.com/iqgeoai/ComfyUI-vidflows.git" "ComfyUI-vidflows"
 clone_or_update "https://github.com/kijai/ComfyUI-LivePortraitKJ.git" "ComfyUI-LivePortraitKJ"
 clone_or_update "https://github.com/yaiol/comfyui-workflows.git" "comfyui-workflows-library"
+
+# Legados úteis como fallback/referência
+clone_or_update "https://github.com/cubiq/ComfyUI_essentials.git" "ComfyUI_essentials-legado"
+clone_or_update "https://github.com/cubiq/ComfyUI_InstantID.git" "ComfyUI_InstantID-legado"
 
 # Conversa / Telegram / Fanvue
 clone_or_update "https://github.com/yaziradevteam/PulseChatAI.git" "PulseChatAI-reference"
 clone_or_update "https://github.com/dnpix/telegram-fanvue-bot.git" "telegram-fanvue-bot-reference"
-clone_or_update "https://github.com/fanvue/fanvue-chatbot-example.git" "fanvue-chatbot-official-reference"
-clone_or_update "https://github.com/LehaDeev/fanvue_ai_bot.git" "fanvue-ai-bot-reference"
+clone_or_update "https://github.com/fanvue/fanvue-chatbot-example.git" "fanvue-chatbot-oficial"
+clone_or_update "https://github.com/LehaDeev/fanvue_ai_bot.git" "fanvue-ai-bot-rag-reference"
 
 # Publicação / automação
 clone_or_update "https://github.com/gitroomhq/postiz-app.git" "postiz"
@@ -56,5 +58,5 @@ clone_or_update "https://github.com/enescingoz/awesome-n8n-templates.git" "aweso
 
 echo
 echo "Arsenal externo pronto em: $EXTERNAL"
-echo "Próximo passo: leia 00-start-here/START.md e 90-upstreams/ARSENAL.md."
+echo "Preferência: use os submódulos de ferramentas/ e complementos/; este script serve para uma cópia independente dos upstreams."
 echo "Importante: modelos/checkpoints grandes não são baixados automaticamente."
