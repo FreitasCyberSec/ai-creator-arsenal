@@ -41,10 +41,22 @@ Atualizado em 17/09/2026.
 - workflow n8n para ingestão de eventos no CRM;
 - schema PostgreSQL/pgvector para creators, contatos, mensagens, memórias, assets, campanhas, ofertas, compras e eventos;
 - Docker Compose com n8n + PostgreSQL/pgvector + Redis;
+- variante específica para EasyPanel;
 - `.env.example` central;
 - scripts de bootstrap;
 - scripts de inicialização dos submódulos;
 - documentação operacional em PT-BR.
+
+## EasyPanel
+
+A variante `10-infrastructure/docker-compose.easypanel.yml` força o n8n a escutar em IPv4 com:
+
+```text
+N8N_LISTEN_ADDRESS=0.0.0.0
+N8N_WORKER_SERVER_ADDRESS=0.0.0.0
+```
+
+Isso evita crash em hosts/containers onde IPv6 (`::`) não está disponível.
 
 ## O que propositalmente NÃO está dentro do Git
 
