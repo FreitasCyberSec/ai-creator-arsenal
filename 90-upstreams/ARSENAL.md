@@ -1,105 +1,105 @@
-# Curated Upstream Arsenal
+# Arsenal de Projetos Externos Selecionados
 
-This is the initial high-value set. The goal is not to hoard repositories; each entry fills a specific layer of the operating stack.
+Este é o conjunto inicial de maior valor. A ideia não é acumular repositórios, mas usar cada projeto para preencher uma camada específica da operação.
 
-## Tier S — core
+## Tier S — núcleo principal
 
-### Character / image / video
+### Personagem / imagem / vídeo
 
 - `SciensOne/comfyui-workflow-generator`
-  - Role: consistent-character photosets, face-reference generation, PuLID-style identity lock and image-to-video workflow generation.
-  - Why: small, focused and MIT licensed.
-  - Clone target: `external/comfyui-workflow-generator`
+  - Função: photosets com personagem consistente, geração de rosto de referência, identidade com PuLID e geração de workflows de imagem para vídeo.
+  - Por que vale usar: projeto pequeno, focado e com licença MIT.
+  - Pasta local após bootstrap: `external/comfyui-workflow-generator`
 
 - `iqgeoai/ComfyUI-vidflows`
-  - Role: multi-scene AI video workflows, image-to-video, talking-head/lip-sync style pipelines.
-  - Why: useful production reference for turning an identity image into repeatable video pipelines.
-  - Clone target: `external/ComfyUI-vidflows`
+  - Função: workflows de vídeo com IA, múltiplas cenas, image-to-video e pipelines tipo talking-head/lip-sync.
+  - Por que vale usar: boa referência para transformar uma imagem consistente da personagem em pipelines de vídeo repetíveis.
+  - Pasta local: `external/ComfyUI-vidflows`
 
 - `facefusion/facefusion`
-  - Role: face/identity transformation pipeline for authorized assets.
-  - Why: mature project and useful as a dedicated external tool rather than mixing face processing into every workflow.
-  - Clone target: `external/facefusion`
+  - Função: transformação de rosto/identidade para assets autorizados.
+  - Por que vale usar: projeto maduro; é melhor rodá-lo como ferramenta separada do que misturar processamento facial em cada workflow.
+  - Pasta local: `external/facefusion`
 
 - `yaiol/comfyui-workflows`
-  - Role: very large ComfyUI workflow reference library.
-  - Why: useful as a research library for InstantID, FaceID, PuLID, image/video and many other graph patterns.
-  - Clone target: `external/comfyui-workflows-library`
+  - Função: biblioteca enorme de workflows do ComfyUI.
+  - Por que vale usar: ótima para pesquisar padrões de InstantID, FaceID, PuLID, imagem, vídeo e outras arquiteturas.
+  - Pasta local: `external/comfyui-workflows-library`
 
-### Telegram / conversion
+### Telegram / conversão
 
 - `yaziradevteam/PulseChatAI`
-  - Role: Telegram conversational AI with intent detection, lead scoring, escalation and CTA timing.
-  - Why: closest public reference to a behavior-aware conversational funnel.
-  - License status: no explicit license observed; **reference-only unless upstream grants permission**.
-  - Clone target: `external/PulseChatAI-reference`
+  - Função: IA conversacional no Telegram com detecção de intenção, lead scoring, escalonamento e controle do momento de CTA.
+  - Por que vale usar: é uma das referências públicas mais próximas de um funil conversacional orientado por comportamento.
+  - Licença: não foi encontrada licença explícita; use como **referência** até haver permissão clara.
+  - Pasta local: `external/PulseChatAI-reference`
 
 - `dnpix/telegram-fanvue-bot`
-  - Role: Telegram warm-up/conversation bridge toward Fanvue.
-  - Why: compact example of acquisition -> conversation -> CTA logic.
-  - License status: verify before copying/modifying/distributing.
-  - Clone target: `external/telegram-fanvue-bot-reference`
+  - Função: ponte de aquecimento/conversa no Telegram até a Fanvue.
+  - Por que vale usar: exemplo compacto de `aquisição -> conversa -> CTA`.
+  - Licença: revisar antes de copiar, modificar ou redistribuir.
+  - Pasta local: `external/telegram-fanvue-bot-reference`
 
-### Fanvue / CRM messaging
+### Fanvue / CRM / mensagens
 
 - `fanvue/fanvue-chatbot-example`
-  - Role: official Fanvue API/OAuth/chat integration reference.
-  - Why: use official API patterns as the integration contract.
-  - License status: repository currently exposes no explicit license; use as API/reference material.
-  - Clone target: `external/fanvue-chatbot-official-reference`
+  - Função: referência oficial de integração Fanvue API/OAuth/chat.
+  - Por que vale usar: é a melhor base para entender o contrato oficial de integração.
+  - Licença: não havia licença explícita visível quando este arsenal foi montado; use como referência de API.
+  - Pasta local: `external/fanvue-chatbot-official-reference`
 
 - `LehaDeev/fanvue_ai_bot`
-  - Role: Fanvue AI chat, RAG/memory, Postgres/pgvector and Telegram admin patterns.
-  - Why: useful architecture reference for persistent customer memory and operator control.
-  - Clone target: `external/fanvue-ai-bot-reference`
+  - Função: chat por IA na Fanvue, RAG/memória, Postgres/pgvector e administração via Telegram.
+  - Por que vale usar: excelente referência para memória persistente de cliente e controle operacional.
+  - Pasta local: `external/fanvue-ai-bot-reference`
 
-### Social distribution
+### Distribuição social
 
 - `gitroomhq/postiz-app`
-  - Role: multi-platform publishing/scheduling service.
-  - Why: mature social distribution layer; keep it isolated as a service.
-  - License: AGPL-3.0.
-  - Clone target: `external/postiz`
+  - Função: serviço de publicação e agendamento em múltiplas plataformas.
+  - Por que vale usar: camada madura para distribuição social; deve ficar isolada como serviço.
+  - Licença: AGPL-3.0.
+  - Pasta local: `external/postiz`
 
-### n8n workflow library
+### Biblioteca de workflows n8n
 
 - `enescingoz/awesome-n8n-templates`
-  - Role: large workflow library for n8n.
-  - Why: broad source pool for content, AI, Telegram, databases and automation patterns.
-  - License: CC BY 4.0; preserve attribution.
-  - Clone target: `external/awesome-n8n-templates`
+  - Função: grande biblioteca de workflows n8n.
+  - Por que vale usar: fonte ampla de automações para conteúdo, IA, Telegram, banco de dados e operações.
+  - Licença: CC BY 4.0; manter atribuição.
+  - Pasta local: `external/awesome-n8n-templates`
 
-## Architecture target
+## Arquitetura alvo
 
 ```text
-[Character Bible]
+[Bíblia da Personagem]
       |
       v
-[ComfyUI identity + photo/video]
+[ComfyUI: identidade + foto/vídeo]
       |
       v
-[Content approval/storage]
+[Aprovação / armazenamento de conteúdo]
       |
       v
-[n8n orchestrator] ---> [Postiz] ---> IG/TikTok/X/Reddit
+[Orquestrador n8n] ---> [Postiz] ---> IG/TikTok/X/Reddit
       |
-      +---> Telegram conversational layer
+      +---> Camada conversacional Telegram
       |          |
       |          v
-      |      intent / lead state
+      |     intenção / estado do lead
       |          |
       +----------+
       |
       v
-[Fanvue API]
+[API Fanvue]
       |
       v
 [Postgres/Supabase + pgvector]
       |
       v
-[retention / re-engagement / analytics]
+[retenção / reengajamento / analytics]
 ```
 
-## Do not blindly merge upstream projects
+## Não misture tudo sem critério
 
-Use the arsenal as modular services and references. Large applications such as Postiz and FaceFusion should remain isolated services. Projects with no explicit license should not have their source copied into proprietary code until permission/terms are clear.
+Use este arsenal de forma modular. Aplicações grandes como Postiz e FaceFusion devem ficar isoladas como serviços. Projetos sem licença explícita não devem ter o código incorporado diretamente ao seu código proprietário até os termos estarem claros.
