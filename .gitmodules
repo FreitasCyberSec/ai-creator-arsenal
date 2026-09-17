@@ -6,6 +6,10 @@
 	path = ferramentas/ComfyUI-Manager
 	url = https://github.com/Comfy-Org/ComfyUI-Manager.git
 
+[submodule "ferramentas/ComfyUI-PuLID-Flux"]
+	path = ferramentas/ComfyUI-PuLID-Flux
+	url = https://github.com/balazik/ComfyUI-PuLID-Flux.git
+
 [submodule "ferramentas/ComfyUI-WanVideoWrapper"]
 	path = ferramentas/ComfyUI-WanVideoWrapper
 	url = https://github.com/kijai/ComfyUI-WanVideoWrapper.git
