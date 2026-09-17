@@ -1,68 +1,68 @@
-# Fanvue Integration Layer
+# Camada de Integração com a Fanvue
 
-Treat Fanvue as a platform adapter, not as the brain of the operation. CRM state should remain in your own database so the same contact logic can later support other channels.
+Trate a Fanvue como um adaptador de plataforma, e não como o cérebro da operação. O estado do CRM deve permanecer no seu próprio banco para que a mesma lógica de contatos possa atender outros canais no futuro.
 
-## Event direction
-
-```text
-Fanvue event/webhook
-   -> n8n ingestion
-   -> normalize event
-   -> resolve creator/contact
-   -> append event
-   -> update CRM rollups
-   -> trigger allowed follow-up
-```
-
-Typical events to normalize when the platform exposes them:
-
-- new follower
-- new subscriber
-- new message
-- purchase
-- tip
-- subscription renewal
-- subscription expiration/cancellation
-
-## Outbound direction
+## Entrada de eventos
 
 ```text
-CRM / conversation decision
-   -> policy gate
-   -> Fanvue API adapter
-   -> send reply / approved action
-   -> persist outbound message/event
+evento/webhook Fanvue
+   -> ingestão no n8n
+   -> normalizar evento
+   -> identificar creator/contato
+   -> registrar evento
+   -> atualizar métricas/estado do CRM
+   -> disparar próximo passo permitido
 ```
 
-## Priority references
+Eventos úteis para normalizar quando a plataforma disponibilizar:
 
-### Official reference
+- novo seguidor
+- novo assinante
+- nova mensagem
+- compra
+- gorjeta
+- renovação de assinatura
+- expiração/cancelamento
+
+## Saída de ações
+
+```text
+CRM / decisão da conversa
+   -> checagem de política
+   -> adaptador da API Fanvue
+   -> enviar resposta / ação autorizada
+   -> registrar mensagem/evento de saída
+```
+
+## Referências prioritárias
+
+### Referência oficial
 
 `fanvue/fanvue-chatbot-example`
 
-Use this as the first source for OAuth/API patterns because it is published by Fanvue. The repository did not expose an explicit software license when this arsenal was assembled, so it is treated as reference material rather than copied source.
+Use este projeto como primeira fonte para padrões de OAuth/API porque ele é publicado pela própria Fanvue. Quando este arsenal foi montado, o repositório não apresentava uma licença de software explícita, por isso ele é tratado como referência e não como código incorporado.
 
-### Memory/RAG reference
+### Referência de memória/RAG
 
 `LehaDeev/fanvue_ai_bot`
 
-Useful patterns:
+Padrões úteis:
 
-- persistent conversation state
+- estado persistente de conversa
 - Postgres/pgvector
-- RAG/facts per contact
-- Telegram admin/control surface
-- private/broadcast messaging architecture
+- RAG/fatos por contato
+- painel/administração via Telegram
+- arquitetura de mensagens privadas e broadcast
 
-Review upstream terms before reusing source code.
+Revise os termos do upstream antes de reutilizar código-fonte.
 
-## Separation of concerns
+## Separação de responsabilidades
 
-Keep these independent:
+Mantenha estes componentes separados:
 
-1. `fanvue-adapter` — API/OAuth/webhook transport.
-2. `conversation-engine` — model/persona/intent.
-3. `crm` — state, purchases, attribution and memory.
-4. `orchestrator` — n8n workflows and schedules.
+1. `fanvue-adapter` — transporte de API/OAuth/webhook.
+2. `conversation-engine` — modelo/persona/intenção.
+3. `crm` — estado, compras, atribuição e memória.
+4. `orchestrator` — workflows e agendamentos do n8n.
 
-That separation makes platform migration much easier.
+Essa separação facilita muito migrar ou adicionar plataformas depois.
