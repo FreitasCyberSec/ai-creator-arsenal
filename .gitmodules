@@ -1,0 +1,3 @@
+[submodule "ferramentas/ComfyUI"]
+	path = ferramentas/ComfyUI
+	url = https://github.com/Comfy-Org/ComfyUI.git
