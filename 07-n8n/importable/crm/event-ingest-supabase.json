@@ -1,5 +1,5 @@
 {
-  "name": "Creator OS - Event Ingest to Supabase",
+  "name": "Creator OS - Ingestão de Eventos no Supabase",
   "nodes": [
     {
       "parameters": {
@@ -9,7 +9,7 @@
         "options": {}
       },
       "id": "0f3c37a0-6f61-4f4a-a001-creatorwebhook01",
-      "name": "Creator Event Webhook",
+      "name": "Webhook de Eventos",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [-520, 220],
@@ -17,10 +17,10 @@
     },
     {
       "parameters": {
-        "jsCode": "const input = $json.body ?? $json;\n\nif (!input.event_name) {\n  throw new Error('event_name is required');\n}\n\nreturn [{ json: {\n  event_name: input.event_name,\n  creator_id: input.creator_id ?? null,\n  contact_id: input.contact_id ?? null,\n  campaign_id: input.campaign_id ?? null,\n  channel: input.channel ?? null,\n  source: input.source ?? null,\n  click_id: input.click_id ?? null,\n  value: input.value ?? null,\n  currency: input.currency ?? null,\n  properties: input.properties ?? {},\n  occurred_at: input.occurred_at ?? new Date().toISOString()\n}}];"
+        "jsCode": "const input = $json.body ?? $json;\n\nif (!input.event_name) {\n  throw new Error('event_name é obrigatório');\n}\n\nreturn [{ json: {\n  event_name: input.event_name,\n  creator_id: input.creator_id ?? null,\n  contact_id: input.contact_id ?? null,\n  campaign_id: input.campaign_id ?? null,\n  channel: input.channel ?? null,\n  source: input.source ?? null,\n  click_id: input.click_id ?? null,\n  value: input.value ?? null,\n  currency: input.currency ?? null,\n  properties: input.properties ?? {},\n  occurred_at: input.occurred_at ?? new Date().toISOString()\n}}];"
       },
       "id": "f2836a2b-99d6-4212-a002-normalizeevent1",
-      "name": "Normalize Event",
+      "name": "Normalizar Evento",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [-280, 220]
@@ -44,7 +44,7 @@
         "options": {}
       },
       "id": "c81a8e61-9660-4ad0-a003-writeevent001",
-      "name": "Write Event to Supabase",
+      "name": "Gravar Evento no Supabase",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [-20, 220]
@@ -56,33 +56,33 @@
         "options": {}
       },
       "id": "e563f4c9-c61b-40f2-a004-response0001",
-      "name": "Respond OK",
+      "name": "Responder OK",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [240, 220]
     },
     {
       "parameters": {
-        "content": "## Creator OS event ingest\nPOST normalized events here from Telegram, Fanvue, social tracking or your own apps.\n\nRequired: `event_name`.\n\nSet `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in the n8n environment. The target schema lives in `08-memory-crm/schema.sql`.\n\nExample events: `lead_created`, `message_received`, `cta_clicked`, `checkout_started`, `purchase`, `renewal`, `churn`, `reengaged`.",
+        "content": "## Ingestão de eventos do Creator OS\nEnvie para este webhook eventos normalizados vindos do Telegram, Fanvue, tracking social ou seus próprios serviços.\n\nObrigatório: `event_name`.\n\nConfigure `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` no ambiente do n8n. O schema de destino está em `08-memory-crm/schema.sql`.\n\nExemplos de eventos: `lead_created`, `message_received`, `cta_clicked`, `checkout_started`, `purchase`, `renewal`, `churn`, `reengaged`.",
         "height": 360,
         "width": 430
       },
       "id": "fcf7d954-94d8-45c3-a005-note0000001",
-      "name": "Setup note",
+      "name": "Nota de configuração",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [-520, -220]
     }
   ],
   "connections": {
-    "Creator Event Webhook": {
-      "main": [[{"node": "Normalize Event", "type": "main", "index": 0}]]
+    "Webhook de Eventos": {
+      "main": [[{"node": "Normalizar Evento", "type": "main", "index": 0}]]
     },
-    "Normalize Event": {
-      "main": [[{"node": "Write Event to Supabase", "type": "main", "index": 0}]]
+    "Normalizar Evento": {
+      "main": [[{"node": "Gravar Evento no Supabase", "type": "main", "index": 0}]]
     },
-    "Write Event to Supabase": {
-      "main": [[{"node": "Respond OK", "type": "main", "index": 0}]]
+    "Gravar Evento no Supabase": {
+      "main": [[{"node": "Responder OK", "type": "main", "index": 0}]]
     }
   },
   "pinData": {},
