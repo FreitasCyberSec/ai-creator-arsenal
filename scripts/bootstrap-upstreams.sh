@@ -11,12 +11,12 @@ clone_or_update() {
   local dest="$EXTERNAL/$dir"
 
   if [ -d "$dest/.git" ]; then
-    echo "Updating $dir..."
+    echo "Atualizando $dir..."
     git -C "$dest" pull --ff-only
   elif [ -e "$dest" ]; then
-    echo "Skipping $dest (exists but is not a git repo)" >&2
+    echo "Ignorando $dest (existe, mas não é um repositório Git)" >&2
   else
-    echo "Cloning $url..."
+    echo "Clonando $url..."
     git clone --depth 1 "$url" "$dest"
   fi
 }
@@ -33,5 +33,5 @@ clone_or_update "https://github.com/gitroomhq/postiz-app.git" "postiz"
 clone_or_update "https://github.com/enescingoz/awesome-n8n-templates.git" "awesome-n8n-templates"
 
 echo
-echo "Arsenal upstreams ready under: $EXTERNAL"
-echo "Read 90-upstreams/ARSENAL.md and upstream license files before redistributing source."
+echo "Projetos externos prontos em: $EXTERNAL"
+echo "Leia 90-upstreams/ARSENAL.md e as licenças de cada projeto antes de redistribuir código."
