@@ -1,0 +1,44 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+.next/
+dist/
+build/
+
+# Local media / models
+models/
+checkpoints/
+loras/
+private-media/
+outputs/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Runtime databases
+*.db
+*.sqlite
+*.sqlite3
