@@ -1,57 +1,57 @@
-# Social Automation Stack
+# Stack de Automação Social
 
-## Recommended split
+## Divisão recomendada
 
-Use **n8n** as orchestrator and **Postiz** as the durable publisher/scheduler service. Keep platform credentials in the publisher or secret manager, not spread across dozens of workflows.
+Use **n8n** como orquestrador e **Postiz** como serviço de publicação/agendamento. As credenciais das plataformas devem ficar no publisher ou em um gerenciador de segredos, não espalhadas por dezenas de workflows.
 
 ```text
-Approved asset
+Asset aprovado
    -> n8n
-   -> caption/metadata variants
-   -> policy/approval check
-   -> publisher adapter
+   -> gerar variações de legenda/metadados
+   -> checagem de política/aprovação
+   -> adaptador de publicação
    -> Instagram / TikTok / X / Reddit / etc.
-   -> save post IDs + URLs
-   -> ingest performance metrics
+   -> salvar IDs e URLs dos posts
+   -> coletar métricas
 ```
 
-## Primary publisher
+## Publisher principal
 
 `external/postiz/`
 
-Postiz is pulled by the bootstrap script and should run as an isolated service. It is AGPL-3.0; keep its source/license boundary clear from your own proprietary code.
+O Postiz é puxado pelo script de bootstrap e deve rodar como serviço isolado. Ele usa AGPL-3.0; mantenha a fronteira da licença clara em relação ao seu código proprietário.
 
-## Fast importable workflow
+## Workflow importável para teste rápido
 
 `07-n8n/importable/social/one-video-multiplatform-postwire.json`
 
-Useful for quickly testing the concept:
+Serve para testar rapidamente a ideia:
 
 ```text
-video URL
- -> per-platform caption generation
+URL do vídeo
+ -> gerar legenda específica por plataforma
  -> TikTok
  -> Instagram
  -> YouTube
 ```
 
-The same pattern can be extended to other supported networks. For long-term operation, prefer a publisher abstraction so you can swap providers.
+O mesmo padrão pode ser estendido para outras redes. Para operação de longo prazo, prefira um adaptador de publicação para conseguir trocar de fornecedor sem reconstruir tudo.
 
-## Content strategy rule
+## Regra de conteúdo
 
-Do not send identical text to every network. Adapt:
+Não publique exatamente o mesmo texto em todas as redes. Adapte:
 
-- hook length
-- caption length
+- tamanho do gancho
+- tamanho da legenda
 - hashtags
-- title/description fields
-- CTA wording
-- posting time
-- media aspect ratio
+- título/descrição
+- CTA
+- horário de publicação
+- formato e proporção da mídia
 
-## Platform adapters
+## Contrato dos adaptadores
 
-Create one adapter contract:
+Entrada sugerida:
 
 ```json
 {
@@ -64,7 +64,7 @@ Create one adapter contract:
 }
 ```
 
-Every publisher implementation should return:
+Saída esperada:
 
 ```json
 {
@@ -75,11 +75,11 @@ Every publisher implementation should return:
 }
 ```
 
-This keeps n8n flows independent of one publishing vendor.
+Assim os workflows do n8n não ficam presos a um único serviço de publicação.
 
-## Safety/operations
+## Operação segura
 
-- Use official APIs/approved publisher integrations when possible.
-- Respect per-platform rate limits and content rules.
-- Keep mainstream social content platform-compliant.
-- Avoid unsolicited comment/DM spam and account-evasion automation.
+- Prefira APIs oficiais e integrações aprovadas.
+- Respeite limites de uso e regras de conteúdo de cada plataforma.
+- Mantenha o conteúdo mainstream compatível com a política de cada rede.
+- Evite automações de spam por comentários/DMs e mecanismos de evasão de contas.
