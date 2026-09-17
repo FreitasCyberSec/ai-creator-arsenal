@@ -45,3 +45,27 @@
 [submodule "ferramentas/Awesome-n8n-Templates"]
 	path = ferramentas/Awesome-n8n-Templates
 	url = https://github.com/enescingoz/awesome-n8n-templates.git
+
+[submodule "complementos/ComfyUI-Essentials-Legado"]
+	path = complementos/ComfyUI-Essentials-Legado
+	url = https://github.com/cubiq/ComfyUI_essentials.git
+
+[submodule "complementos/ComfyUI-InstantID-Legado"]
+	path = complementos/ComfyUI-InstantID-Legado
+	url = https://github.com/cubiq/ComfyUI_InstantID.git
+
+[submodule "complementos/ComfyUI-Vidflows"]
+	path = complementos/ComfyUI-Vidflows
+	url = https://github.com/iqgeoai/ComfyUI-vidflows.git
+
+[submodule "complementos/ComfyUI-LivePortrait"]
+	path = complementos/ComfyUI-LivePortrait
+	url = https://github.com/kijai/ComfyUI-LivePortraitKJ.git
+
+[submodule "complementos/Biblioteca-ComfyUI-Workflows"]
+	path = complementos/Biblioteca-ComfyUI-Workflows
+	url = https://github.com/yaiol/comfyui-workflows.git
+
+[submodule "complementos/Fanvue-AI-Bot-RAG"]
+	path = complementos/Fanvue-AI-Bot-RAG
+	url = https://github.com/LehaDeev/fanvue_ai_bot.git
