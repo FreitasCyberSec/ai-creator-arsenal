@@ -1,0 +1,81 @@
+services:
+  crm_db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${CRM_POSTGRES_DB:-creator_os}
+      POSTGRES_USER: ${CRM_POSTGRES_USER:-creator_os}
+      POSTGRES_PASSWORD: ${CRM_POSTGRES_PASSWORD}
+    volumes:
+      - crm_postgres_data:/var/lib/postgresql/data
+      - ../08-memory-crm/schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${CRM_POSTGRES_USER:-creator_os} -d ${CRM_POSTGRES_DB:-creator_os}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  n8n_db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${N8N_DB_NAME:-n8n}
+      POSTGRES_USER: ${N8N_DB_USER:-n8n}
+      POSTGRES_PASSWORD: ${N8N_DB_PASSWORD}
+    volumes:
+      - n8n_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${N8N_DB_USER:-n8n} -d ${N8N_DB_NAME:-n8n}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  n8n:
+    image: n8nio/n8n:latest
+    restart: unless-stopped
+    expose:
+      - "5678"
+    environment:
+      TZ: ${TZ:-America/Sao_Paulo}
+      GENERIC_TIMEZONE: ${TZ:-America/Sao_Paulo}
+      N8N_HOST: ${N8N_HOST}
+      N8N_PORT: 5678
+      N8N_PROTOCOL: https
+      N8N_EDITOR_BASE_URL: ${N8N_EDITOR_BASE_URL}
+      WEBHOOK_URL: ${WEBHOOK_URL}
+      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY}
+      N8N_PROXY_HOPS: 1
+      N8N_SECURE_COOKIE: "true"
+      DB_TYPE: postgresdb
+      DB_POSTGRESDB_HOST: n8n_db
+      DB_POSTGRESDB_PORT: 5432
+      DB_POSTGRESDB_DATABASE: ${N8N_DB_NAME:-n8n}
+      DB_POSTGRESDB_USER: ${N8N_DB_USER:-n8n}
+      DB_POSTGRESDB_PASSWORD: ${N8N_DB_PASSWORD}
+      EXECUTIONS_DATA_PRUNE: "true"
+      EXECUTIONS_DATA_MAX_AGE: 336
+    volumes:
+      - n8n_data:/home/node/.n8n
+    depends_on:
+      n8n_db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  crm_postgres_data:
+  n8n_postgres_data:
+  redis_data:
+  n8n_data:
