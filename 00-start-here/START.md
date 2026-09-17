@@ -1,61 +1,60 @@
-# Start Here
+# Comece Aqui
 
-## Goal
+## Objetivo
 
-Turn this repository into a reusable AI creator operating stack rather than a pile of unrelated projects.
+Transformar este repositório em um stack reutilizável para uma operação de criadores com IA, em vez de virar apenas uma coleção de projetos sem conexão.
 
-## Recommended deployment order
+## Ordem recomendada de implantação
 
-1. Character identity and consistent image workflow.
-2. Video pipeline.
-3. Content approval/storage layer.
-4. Social publishing service.
-5. Telegram acquisition/conversation layer.
-6. Fanvue API integration.
-7. n8n orchestration.
-8. Supabase/Postgres/pgvector state and memory.
-9. Analytics and attribution.
-10. Retention/re-engagement automations.
+1. Identidade da personagem e workflow de imagem consistente.
+2. Pipeline de vídeo.
+3. Camada de aprovação e armazenamento de conteúdo.
+4. Serviço de publicação em redes sociais.
+5. Camada de aquisição/conversa no Telegram.
+6. Integração com a API da Fanvue.
+7. Orquestração com n8n.
+8. Estado e memória com Supabase/Postgres/pgvector.
+9. Analytics e atribuição.
+10. Automações de retenção e reengajamento.
 
-## Local stack
-
-Recommended base services:
+## Stack local recomendado
 
 ```text
 ComfyUI
 n8n
 Postgres / Supabase
 pgvector
-Redis (optional)
-Postiz (isolated service)
+Redis (opcional)
+Postiz (serviço isolado)
 Telegram Bot API
 Fanvue API
-LLM provider or local LLM endpoint
-Object storage for approved media
+Provedor de LLM ou endpoint de LLM local
+Armazenamento de objetos para mídia aprovada
 ```
 
-## First practical milestone
+## Primeiro marco prático
 
-Build one end-to-end path:
+Monte primeiro um único caminho ponta a ponta:
 
 ```text
-character reference
-  -> generate approved image
-  -> store asset
-  -> create caption
-  -> human approval
-  -> publish to one social channel
-  -> tracked link
-  -> Telegram/Fanvue conversation
-  -> CRM event
+referência da personagem
+  -> gerar imagem
+  -> revisar/aprovar
+  -> armazenar asset
+  -> criar legenda
+  -> aprovação humana
+  -> publicar em uma rede social
+  -> link rastreado
+  -> conversa Telegram/Fanvue
+  -> registrar evento no CRM
 ```
 
-Do not automate every channel before this single path is reliable.
+Não tente automatizar todas as redes antes de esse fluxo único estar funcionando de forma confiável.
 
-## Environment policy
+## Política de ambiente
 
-Use `.env.example` files only. Real credentials belong in your deployment platform/secret manager, never in Git.
+Use apenas arquivos `.env.example` no Git. Credenciais reais devem ficar no seu servidor, plataforma de deploy ou gerenciador de segredos.
 
-## Identity/media policy
+## Política de identidade e mídia
 
-Only use faces, voices and private media belonging to consenting adults whose content you are authorized to transform and publish.
+Use apenas rostos, vozes e mídia de adultos que tenham autorizado o uso, transformação e publicação do conteúdo.
