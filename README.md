@@ -1,8 +1,26 @@
 # Arsenal de Criadores com IA
 
-Kit central para montar uma operação de criadores com IA de forma organizada, modular e reutilizável. O repositório reúne componentes para identidade visual consistente, geração de imagens e vídeos, publicação em redes sociais, automação com Telegram/Fanvue, orquestração com n8n, memória/CRM, analytics e infraestrutura.
+Kit central para montar uma operação de criadores com IA de forma organizada, modular e reutilizável. O repositório reúne ferramentas e workflows para identidade visual consistente, geração de imagens e vídeos, publicação em redes sociais, automação com Telegram/Fanvue, orquestração com n8n, memória/CRM, analytics e infraestrutura.
 
 > **Status do repositório:** neste momento ele aparece como **público** pela API conectada do GitHub. Não coloque segredos, credenciais, mídia privada, dados de clientes ou prompts proprietários aqui enquanto você não mudar a visibilidade para **Private** nas configurações do GitHub.
+
+## Instalação rápida
+
+Para clonar o arsenal já trazendo as ferramentas vinculadas:
+
+```bash
+git clone --recurse-submodules https://github.com/FreitasCyberSec/ai-creator-arsenal.git
+cd ai-creator-arsenal
+```
+
+Se você já clonou o repositório antes dos submódulos serem adicionados:
+
+```bash
+git pull
+git submodule update --init --recursive
+```
+
+Os submódulos ficam presos a revisões conhecidas para evitar que uma atualização externa quebre seu ambiente sem aviso. Atualize conscientemente depois de testar.
 
 ## Arquitetura
 
@@ -46,25 +64,36 @@ Retenção / reengajamento
 - `08-memory-crm/` — Supabase/Postgres/pgvector/RAG e memória
 - `09-analytics/` — eventos, atribuição e métricas
 - `10-infrastructure/` — infraestrutura e exemplos de deploy
-- `90-upstreams/` — catálogo dos projetos externos e scripts de bootstrap
-- `99-licenses/` — licenças e créditos dos projetos usados
+- `ferramentas/` — ferramentas principais vinculadas como submódulos Git
+- `complementos/` — bibliotecas, alternativas e ferramentas de referência/fallback
+- `90-upstreams/` — catálogo explicando o papel de cada projeto
+- `99-licenses/` — licenças e créditos dos materiais incorporados diretamente
 
-## Stack inicial prioritário
+## Ferramentas principais já vinculadas
 
-1. **SciensOne/comfyui-workflow-generator** — geração consistente de personagem e workflows de imagem/vídeo; licença MIT.
-2. **Postiz** — publicação em múltiplas redes sociais; deve rodar como serviço externo isolado por causa da licença AGPL.
-3. **Exemplo oficial de chatbot da Fanvue** — referência oficial de API/OAuth.
-4. **PulseChatAI** — referência de funil conversacional, intenção e lead scoring no Telegram.
-5. **Bibliotecas de workflows n8n** — fonte de automações reaproveitáveis.
-6. **Supabase/Postgres/pgvector** — memória, estado, atribuição e CRM.
+O núcleo inclui ComfyUI, ComfyUI Manager, PuLID-Flux, WanVideoWrapper, VideoHelperSuite, FaceFusion, Postiz, chatbot oficial da Fanvue, PulseChatAI, Telegram-Fanvue-Bot, o gerador de workflows ComfyUI e uma grande biblioteca de templates n8n.
+
+Os complementos incluem InstantID e Essentials como referências legadas, ComfyUI Vidflows, LivePortrait, uma grande biblioteca de workflows ComfyUI e um bot Fanvue com RAG/pgvector.
+
+> Os documentos criados neste repositório estão em **PT-BR**. O código e os READMEs que aparecem dentro dos submódulos pertencem aos projetos originais e, por isso, permanecem no idioma do upstream.
+
+## Stack prioritário
+
+1. **ComfyUI + Manager** — base visual para geração.
+2. **ComfyUI Workflow Generator + PuLID-Flux** — consistência de personagem e lotes de conteúdo.
+3. **WanVideoWrapper + VideoHelperSuite** — geração, montagem e tratamento de vídeo.
+4. **FaceFusion** — transformação de identidade apenas em assets autorizados.
+5. **Postiz** — distribuição e agendamento em múltiplas redes.
+6. **Telegram/Fanvue + Fanvue API oficial** — conversa, aquisição e monetização.
+7. **n8n + Postgres/pgvector** — orquestração, CRM, memória, eventos e analytics.
 
 ## Regras do arsenal
 
 - Nunca commitar `.env`, chaves de API, cookies de sessão, tokens, dados de clientes ou mídia privada.
 - Só copiar código de terceiros quando a licença permitir e mantendo os créditos exigidos.
 - Aplicações AGPL/copy-left devem ficar isoladas como serviços, a menos que você decida conscientemente aceitar as obrigações da licença.
-- Repositórios sem licença explícita ficam como **referência**, não como código incorporado.
+- Repositórios sem licença explícita ficam como referência/submódulo, não como código incorporado ao seu código proprietário.
 - Transformação de rosto/voz/identidade deve usar apenas pessoas adultas que tenham autorizado o uso e a transformação do conteúdo.
 - Preferir APIs oficiais e automações aprovadas pelas plataformas.
 
-Comece por `00-start-here/START.md` e depois veja `90-upstreams/ARSENAL.md`.
+Comece por `00-start-here/START.md`, depois `ferramentas/LEIA-ME.md` e `90-upstreams/ARSENAL.md`.
