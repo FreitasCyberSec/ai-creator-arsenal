@@ -20,17 +20,17 @@ $repos = @(
 foreach ($repo in $repos) {
   $dest = Join-Path $external $repo.Dir
   if (Test-Path (Join-Path $dest '.git')) {
-    Write-Host "Updating $($repo.Dir)..."
+    Write-Host "Atualizando $($repo.Dir)..."
     git -C $dest pull --ff-only
   }
   elseif (Test-Path $dest) {
-    Write-Warning "$dest exists but is not a git repository; skipping."
+    Write-Warning "$dest existe, mas não é um repositório Git; ignorando."
   }
   else {
-    Write-Host "Cloning $($repo.Url)..."
+    Write-Host "Clonando $($repo.Url)..."
     git clone --depth 1 $repo.Url $dest
   }
 }
 
-Write-Host "`nArsenal upstreams ready under: $external"
-Write-Host 'Review 90-upstreams/ARSENAL.md and each upstream license before redistributing or modifying.'
+Write-Host "`nProjetos externos prontos em: $external"
+Write-Host 'Leia 90-upstreams/ARSENAL.md e as licenças de cada projeto antes de redistribuir ou modificar código.'
