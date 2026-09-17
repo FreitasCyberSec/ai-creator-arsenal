@@ -1,15 +1,15 @@
-# Unified Event Contract
+# Contrato Unificado de Eventos
 
-All channels should emit the same event shape so attribution and customer state are not tied to one platform.
+Todos os canais devem emitir eventos no mesmo formato para que atribuição e estado do cliente não fiquem presos a uma única plataforma.
 
-## Canonical payload
+## Payload canônico
 
 ```json
 {
   "event_name": "purchase",
-  "creator_id": "uuid-or-null",
-  "contact_id": "uuid-or-null",
-  "campaign_id": "uuid-or-null",
+  "creator_id": "uuid-ou-null",
+  "contact_id": "uuid-ou-null",
+  "campaign_id": "uuid-ou-null",
   "channel": "telegram",
   "source": "instagram",
   "click_id": "abc123",
@@ -24,16 +24,18 @@ All channels should emit the same event shape so attribution and customer state 
 }
 ```
 
-## Recommended events
+Os nomes técnicos dos campos permanecem em inglês para evitar quebrar integrações e workflows.
 
-### Acquisition
+## Eventos recomendados
+
+### Aquisição
 - `visit`
 - `lead_created`
 - `telegram_started`
 - `fanvue_followed`
 - `fanvue_subscribed`
 
-### Conversation
+### Conversa
 - `message_received`
 - `message_sent`
 - `lead_warmed`
@@ -41,7 +43,7 @@ All channels should emit the same event shape so attribution and customer state 
 - `cta_shown`
 - `cta_clicked`
 
-### Commerce
+### Comércio
 - `checkout_started`
 - `purchase`
 - `tip`
@@ -49,14 +51,14 @@ All channels should emit the same event shape so attribution and customer state 
 - `renewal`
 - `refund`
 
-### Retention
+### Retenção
 - `inactive_7d`
 - `reengagement_sent`
 - `reengaged`
 - `churn`
 - `winback_purchase`
 
-### Content
+### Conteúdo
 - `asset_generated`
 - `asset_approved`
 - `post_published`
@@ -64,22 +66,22 @@ All channels should emit the same event shape so attribution and customer state 
 - `profile_visit`
 - `link_clicked`
 
-## KPIs derived from the contract
+## KPIs derivados desses eventos
 
-- visitor -> lead conversion
-- lead -> CTA rate
-- CTA -> checkout rate
-- checkout -> purchase rate
-- revenue per lead
-- CAC (when paid traffic cost exists)
+- conversão visitante -> lead
+- lead -> CTA
+- CTA -> checkout
+- checkout -> compra
+- receita por lead
+- CAC, quando houver custo de tráfego pago
 - AOV
 - LTV
-- repeat purchase rate
-- renewal rate
-- churn rate
-- re-engagement recovery rate
-- revenue by source/campaign/creative/creator
+- taxa de compra recorrente
+- taxa de renovação
+- churn
+- recuperação por reengajamento
+- receita por source/campaign/creative/creator
 
-## Attribution rule
+## Regra de atribuição
 
-Persist original `source`, `campaign`, `creative` and `click_id` on the contact when first known. Later events can add session-level attribution without destroying the original acquisition source.
+Preserve `source`, `campaign`, `creative` e `click_id` originais no contato assim que forem conhecidos. Eventos posteriores podem adicionar atribuição de sessão sem destruir a origem inicial de aquisição.
