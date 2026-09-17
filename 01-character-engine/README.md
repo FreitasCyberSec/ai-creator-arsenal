@@ -1,64 +1,64 @@
-# Character Engine
+# Motor de Personagem
 
-Goal: keep one authorized adult creator/persona visually consistent across photos and videos.
+Objetivo: manter uma criadora/personagem adulta autorizada visualmente consistente entre fotos e vídeos.
 
-## Included now
+## Já incluído
 
 - `workflows/img-sdxl-face.json`
-  - Generates frontal face candidates that can become the identity reference for downstream workflows.
+  - Gera candidatos de rosto frontal que podem virar a referência principal de identidade para os workflows seguintes.
 
-## Best upstreams pulled by bootstrap
+## Melhores projetos externos puxados pelo bootstrap
 
 ### `external/comfyui-workflow-generator/`
-Key files:
+Arquivos principais:
 - `workflows/img-sdxl-face.json`
 - `workflows/img-flux.json`
 - `workflows/img-sdxl-illustrious.json`
 - `workflows/longvideo.json`
 
-Use this as the primary workflow generator/reference because it is MIT licensed.
+Use este projeto como principal referência/gerador de workflows porque ele tem licença MIT.
 
 ### `external/comfyui-workflows-library/`
-Large reference library for ComfyUI patterns including identity-preservation and image/video workflows. Treat it as a research library; review individual dependencies and licenses before production use.
+Grande biblioteca de padrões do ComfyUI, incluindo preservação de identidade e workflows de imagem/vídeo. Use como biblioteca de pesquisa e revise dependências e licenças antes de colocar algo em produção.
 
 ### `external/ComfyUI-vidflows/`
-Use for multi-scene video pipeline ideas and image-to-video production.
+Use como referência para pipelines de vídeo com múltiplas cenas e image-to-video.
 
 ### `external/facefusion/`
-Run as a dedicated identity/face-processing tool when you are authorized to transform the source identity.
+Use como ferramenta separada de processamento de rosto/identidade quando você tiver autorização para transformar a identidade usada como fonte.
 
-## Character bible
+## Bíblia da personagem
 
-Before generating at scale, define a stable record containing:
+Antes de gerar conteúdo em escala, defina um registro estável:
 
 ```yaml
-name: CREATOR_01
-adult_age: 25
-face_reference_version: v1
-hair:
-eyes:
-height_style:
-body_style:
-wardrobe_rules:
-makeup_rules:
-voice_style:
-personality:
-forbidden_changes:
+nome: CREATOR_01
+idade_adulta: 25
+versao_rosto_referencia: v1
+cabelo:
+olhos:
+estilo_altura:
+estilo_corporal:
+regras_roupa:
+regras_maquiagem:
+estilo_voz:
+personalidade:
+mudancas_proibidas:
 ```
 
-The goal is to change scenes, poses and wardrobe without unintentionally changing the person's identity.
+O objetivo é conseguir mudar cenário, pose e roupa sem mudar sem querer a identidade da personagem.
 
-## Recommended workflow order
+## Ordem recomendada do workflow
 
 ```text
-face-reference generation
-   -> choose approved reference
-   -> identity-lock image workflow
-   -> create 20-50 test images
-   -> consistency review
-   -> lock prompt/model settings
-   -> create content batch
-   -> image-to-video only after still-image consistency is stable
+geração do rosto de referência
+   -> escolher referência aprovada
+   -> workflow de imagem com trava de identidade
+   -> gerar 20-50 imagens de teste
+   -> revisar consistência
+   -> travar prompt/modelo/configurações
+   -> gerar lote de conteúdo
+   -> só partir para image-to-video quando a consistência das imagens estiver boa
 ```
 
-Never use another person's face or voice without authorization.
+Nunca use rosto ou voz de outra pessoa sem autorização.
