@@ -1,16 +1,16 @@
-# n8n Arsenal
+# Arsenal n8n
 
-## Import these first
+## Importe estes primeiro
 
 ### 1. `importable/crm/event-ingest-supabase.json`
-Use as the universal event endpoint for Telegram, Fanvue, social and your own services.
+Use como endpoint universal de eventos para Telegram, Fanvue, redes sociais e seus próprios serviços.
 
 ### 2. `importable/social/one-video-multiplatform-postwire.json`
-One approved video -> platform-specific captions -> publish to connected social accounts.
+Um vídeo aprovado -> legendas específicas por plataforma -> publicação nas contas conectadas.
 
-## High-value workflows available after running the upstream bootstrap
+## Workflows úteis disponíveis após rodar o bootstrap
 
-Inside `external/awesome-n8n-templates/`:
+Dentro de `external/awesome-n8n-templates/`:
 
 ### Telegram
 - `Telegram/Agentic Telegram AI bot with with LangChain nodes and new tools.json`
@@ -24,38 +24,38 @@ Inside `external/awesome-n8n-templates/`:
 - `Instagram_Twitter_Social_Media/Publish one video natively to TikTok Instagram and YouTube with PostWire.json`
 - `Google_Drive_and_Google_Sheets/Upload to Instagram and Tiktok from Google Drive.json`
 
-## Recommended master orchestration
+## Orquestração mestre recomendada
 
 ```text
-CONTENT READY
-   -> approval gate
-   -> create platform variants
-   -> publish
-   -> write post IDs
-   -> ingest performance events
+CONTEÚDO PRONTO
+   -> aprovação
+   -> criar variações por plataforma
+   -> publicar
+   -> salvar IDs dos posts
+   -> coletar métricas/eventos
 
-NEW TELEGRAM MESSAGE
-   -> identify contact
-   -> retrieve memory
-   -> AI intent/response
-   -> update lead score
-   -> send reply
-   -> append message/event
+NOVA MENSAGEM NO TELEGRAM
+   -> identificar contato
+   -> buscar memória
+   -> IA analisa intenção e responde
+   -> atualizar lead score
+   -> enviar resposta
+   -> registrar mensagem/evento
 
-PLATFORM PURCHASE EVENT
-   -> event ingest
-   -> write purchase
-   -> change contact state to buyer
-   -> start buyer retention path
+EVENTO DE COMPRA
+   -> ingestão de evento
+   -> registrar compra
+   -> mudar estado do contato para buyer
+   -> iniciar retenção pós-compra
 
-INACTIVITY TIMER
-   -> select eligible contacts
-   -> policy/consent check
-   -> re-engagement decision
-   -> send allowed message
-   -> log event
+TEMPORIZADOR DE INATIVIDADE
+   -> selecionar contatos elegíveis
+   -> checar política/consentimento
+   -> decidir reengajamento
+   -> enviar mensagem permitida
+   -> registrar evento
 ```
 
-## Rule
+## Regra importante
 
-Keep credentials inside n8n Credentials or a secret manager. Imported JSON files should contain no live API keys.
+Credenciais devem ficar dentro do sistema de Credentials do n8n ou em um gerenciador de segredos. Os arquivos JSON importáveis não devem conter chaves de API reais.
