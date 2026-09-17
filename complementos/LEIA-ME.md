@@ -2,6 +2,9 @@
 
 Esta pasta reúne ferramentas úteis que eu não colocaria como dependência obrigatória do núcleo. Algumas são bibliotecas grandes, outras são alternativas antigas ou projetos de referência arquitetural.
 
+## `ComfyUI-MultiGPU`
+Distribuição/offload de modelos entre GPUs e memória. Pode ser útil em workflows muito pesados ou setups específicos, mas não é obrigatório para todo mundo. Teste compatibilidade antes de depender dele em produção.
+
 ## `ComfyUI-Essentials-Legado`
 Coleção de nodes úteis do ComfyUI. O upstream entrou em modo de manutenção em 2025. Mantenha como fallback para workflows antigos que dependam desses nodes.
 
