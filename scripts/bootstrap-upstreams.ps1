@@ -12,6 +12,7 @@ $repos = @(
   # Núcleo ComfyUI
   @{ Url = 'https://github.com/Comfy-Org/ComfyUI.git'; Dir = 'ComfyUI' },
   @{ Url = 'https://github.com/Comfy-Org/ComfyUI-Manager.git'; Dir = 'ComfyUI-Manager' },
+  @{ Url = 'https://github.com/city96/ComfyUI-GGUF.git'; Dir = 'ComfyUI-GGUF' },
 
   # Identidade / consistência facial
   @{ Url = 'https://github.com/balazik/ComfyUI-PuLID-Flux.git'; Dir = 'ComfyUI-PuLID-Flux' },
@@ -21,9 +22,12 @@ $repos = @(
   @{ Url = 'https://github.com/SciensOne/comfyui-workflow-generator.git'; Dir = 'comfyui-workflow-generator' },
   @{ Url = 'https://github.com/kijai/ComfyUI-WanVideoWrapper.git'; Dir = 'ComfyUI-WanVideoWrapper' },
   @{ Url = 'https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git'; Dir = 'ComfyUI-VideoHelperSuite' },
+  @{ Url = 'https://github.com/kijai/ComfyUI-MMAudio.git'; Dir = 'ComfyUI-MMAudio' },
+  @{ Url = 'https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git'; Dir = 'ComfyUI-Frame-Interpolation' },
   @{ Url = 'https://github.com/iqgeoai/ComfyUI-vidflows.git'; Dir = 'ComfyUI-vidflows' },
   @{ Url = 'https://github.com/kijai/ComfyUI-LivePortraitKJ.git'; Dir = 'ComfyUI-LivePortraitKJ' },
   @{ Url = 'https://github.com/yaiol/comfyui-workflows.git'; Dir = 'comfyui-workflows-library' },
+  @{ Url = 'https://github.com/neuratech-ai/ComfyUI-MultiGPU.git'; Dir = 'ComfyUI-MultiGPU-opcional' },
 
   # Legados úteis como fallback/referência
   @{ Url = 'https://github.com/cubiq/ComfyUI_essentials.git'; Dir = 'ComfyUI_essentials-legado' },
