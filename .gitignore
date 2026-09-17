@@ -1,4 +1,4 @@
-# Secrets
+# Segredos
 .env
 .env.*
 !.env.example
@@ -9,7 +9,7 @@
 secrets/
 credentials/
 
-# External upstream clones (pulled by bootstrap scripts)
+# Clones externos puxados pelos scripts de bootstrap
 external/
 
 # Python
@@ -24,7 +24,7 @@ node_modules/
 dist/
 build/
 
-# Local media / models
+# Mídia local / modelos
 models/
 checkpoints/
 loras/
@@ -35,13 +35,13 @@ outputs/
 *.pt
 *.pth
 
-# OS / editor
+# Sistema operacional / editor
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
 
-# Runtime databases
+# Bancos locais de runtime
 *.db
 *.sqlite
 *.sqlite3
