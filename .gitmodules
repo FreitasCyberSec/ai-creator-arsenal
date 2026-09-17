@@ -6,6 +6,10 @@
 	path = ferramentas/ComfyUI-Manager
 	url = https://github.com/Comfy-Org/ComfyUI-Manager.git
 
+[submodule "ferramentas/ComfyUI-GGUF"]
+	path = ferramentas/ComfyUI-GGUF
+	url = https://github.com/city96/ComfyUI-GGUF.git
+
 [submodule "ferramentas/ComfyUI-PuLID-Flux"]
 	path = ferramentas/ComfyUI-PuLID-Flux
 	url = https://github.com/balazik/ComfyUI-PuLID-Flux.git
@@ -17,6 +21,14 @@
 [submodule "ferramentas/ComfyUI-VideoHelperSuite"]
 	path = ferramentas/ComfyUI-VideoHelperSuite
 	url = https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
+
+[submodule "ferramentas/ComfyUI-MMAudio"]
+	path = ferramentas/ComfyUI-MMAudio
+	url = https://github.com/kijai/ComfyUI-MMAudio.git
+
+[submodule "ferramentas/ComfyUI-Frame-Interpolation"]
+	path = ferramentas/ComfyUI-Frame-Interpolation
+	url = https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git
 
 [submodule "ferramentas/FaceFusion"]
 	path = ferramentas/FaceFusion
@@ -45,6 +57,10 @@
 [submodule "ferramentas/Awesome-n8n-Templates"]
 	path = ferramentas/Awesome-n8n-Templates
 	url = https://github.com/enescingoz/awesome-n8n-templates.git
+
+[submodule "complementos/ComfyUI-MultiGPU"]
+	path = complementos/ComfyUI-MultiGPU
+	url = https://github.com/neuratech-ai/ComfyUI-MultiGPU.git
 
 [submodule "complementos/ComfyUI-Essentials-Legado"]
 	path = complementos/ComfyUI-Essentials-Legado
