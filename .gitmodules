@@ -1,3 +1,43 @@
 [submodule "ferramentas/ComfyUI"]
 	path = ferramentas/ComfyUI
 	url = https://github.com/Comfy-Org/ComfyUI.git
+
+[submodule "ferramentas/ComfyUI-Manager"]
+	path = ferramentas/ComfyUI-Manager
+	url = https://github.com/Comfy-Org/ComfyUI-Manager.git
+
+[submodule "ferramentas/ComfyUI-WanVideoWrapper"]
+	path = ferramentas/ComfyUI-WanVideoWrapper
+	url = https://github.com/kijai/ComfyUI-WanVideoWrapper.git
+
+[submodule "ferramentas/ComfyUI-VideoHelperSuite"]
+	path = ferramentas/ComfyUI-VideoHelperSuite
+	url = https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
+
+[submodule "ferramentas/FaceFusion"]
+	path = ferramentas/FaceFusion
+	url = https://github.com/facefusion/facefusion.git
+
+[submodule "ferramentas/Postiz"]
+	path = ferramentas/Postiz
+	url = https://github.com/gitroomhq/postiz-app.git
+
+[submodule "ferramentas/Fanvue-Chatbot-Oficial"]
+	path = ferramentas/Fanvue-Chatbot-Oficial
+	url = https://github.com/fanvue/fanvue-chatbot-example.git
+
+[submodule "ferramentas/PulseChatAI"]
+	path = ferramentas/PulseChatAI
+	url = https://github.com/yaziradevteam/PulseChatAI.git
+
+[submodule "ferramentas/Telegram-Fanvue-Bot"]
+	path = ferramentas/Telegram-Fanvue-Bot
+	url = https://github.com/dnpix/telegram-fanvue-bot.git
+
+[submodule "ferramentas/ComfyUI-Workflow-Generator"]
+	path = ferramentas/ComfyUI-Workflow-Generator
+	url = https://github.com/SciensOne/comfyui-workflow-generator.git
+
+[submodule "ferramentas/Awesome-n8n-Templates"]
+	path = ferramentas/Awesome-n8n-Templates
+	url = https://github.com/enescingoz/awesome-n8n-templates.git
