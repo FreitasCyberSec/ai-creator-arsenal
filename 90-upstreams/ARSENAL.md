@@ -8,122 +8,110 @@ Existem três formas:
 
 1. **Submódulo principal** — aparece em `ferramentas/` e faz parte do stack recomendado.
 2. **Submódulo complementar** — aparece em `complementos/` e serve como alternativa, biblioteca ou referência.
-3. **Workflow incorporado** — JSON/SQL/documentação que foi selecionado e fica diretamente neste repo, com licença/crédito quando necessário.
+3. **Workflow incorporado** — JSON/SQL/documentação selecionada que fica diretamente neste repo, com licença/crédito quando necessário.
 
-Para baixar os submódulos em um clone existente:
-
-```bash
-git submodule update --init --recursive
-```
-
-Para clonar tudo de uma vez:
+Clone completo:
 
 ```bash
 git clone --recurse-submodules https://github.com/FreitasCyberSec/ai-creator-arsenal.git
+```
+
+Clone já existente:
+
+```bash
+git pull
+git submodule update --init --recursive
 ```
 
 ---
 
 # Tier S — ferramentas principais
 
-## Geração / personagem
+## Núcleo ComfyUI
 
 ### `ferramentas/ComfyUI`
-- Projeto: `Comfy-Org/ComfyUI`
-- Função: motor visual principal para workflows de geração.
-- Uso no arsenal: base de imagem/vídeo.
+Motor visual principal para geração de imagem e vídeo.
 
 ### `ferramentas/ComfyUI-Manager`
-- Projeto: `Comfy-Org/ComfyUI-Manager`
-- Função: instalar/administrar custom nodes e dependências.
-- Uso no arsenal: facilitar a montagem dos workflows.
+Gerenciamento de custom nodes e dependências.
+
+### `ferramentas/ComfyUI-GGUF`
+Loader para modelos GGUF. Importante para Flux/Wan em setups que usam modelos quantizados.
 
 ### `ferramentas/ComfyUI-Workflow-Generator`
 - Projeto: `SciensOne/comfyui-workflow-generator`
 - Função: photosets consistentes, personagem fixa, Flux/SDXL, lotes e image-to-video.
-- Motivo da escolha: arquitetura muito próxima do que queremos e licença MIT.
+- Motivo da escolha: arquitetura muito próxima do objetivo do arsenal e licença MIT.
 
 ### `ferramentas/ComfyUI-PuLID-Flux`
-- Projeto: `balazik/ComfyUI-PuLID-Flux`
-- Função: identidade facial consistente em Flux a partir de uma referência autorizada.
-- Uso no arsenal: camada de identity lock para personagem.
+Identity lock para Flux usando uma imagem de referência autorizada.
 
 ## Vídeo
 
 ### `ferramentas/ComfyUI-WanVideoWrapper`
-- Projeto: `kijai/ComfyUI-WanVideoWrapper`
-- Função: workflows de modelos Wan para vídeo.
+Integração de modelos Wan para geração de vídeo.
 
 ### `ferramentas/ComfyUI-VideoHelperSuite`
-- Projeto: `Kosinkadink/ComfyUI-VideoHelperSuite`
-- Função: carregar, combinar, processar e exportar vídeo no ComfyUI.
+Carregamento, montagem, processamento e exportação de vídeo.
+
+### `ferramentas/ComfyUI-MMAudio`
+Geração/sincronização de áudio e efeitos em pipelines compatíveis.
+
+### `ferramentas/ComfyUI-Frame-Interpolation`
+Interpolação de frames, incluindo RIFE, para suavizar movimento e aumentar FPS.
 
 ### `ferramentas/FaceFusion`
-- Projeto: `facefusion/facefusion`
-- Função: transformação de face/identidade para assets autorizados.
-- Regra: usar somente com adultos e conteúdo cujo uso/transformação tenha autorização.
+Transformação de face/identidade em imagens e vídeos autorizados. Usar apenas com adultos e assets cujo uso/transformação esteja autorizado.
 
 ## Distribuição social
 
 ### `ferramentas/Postiz`
-- Projeto: `gitroomhq/postiz-app`
-- Função: publicação/agendamento em múltiplas redes sociais.
-- Uso no arsenal: camada de distribuição após aprovação humana.
-- Observação: por ser aplicação grande com licença própria, deve permanecer isolada como serviço.
+Publicação e agendamento em múltiplas redes. Deve funcionar como serviço separado do núcleo do arsenal.
 
 ## Telegram / Fanvue / conversa
 
 ### `ferramentas/Fanvue-Chatbot-Oficial`
-- Projeto: `fanvue/fanvue-chatbot-example`
-- Função: OAuth 2.0, leitura/escrita de chat e referência oficial da API Fanvue.
-- Uso no arsenal: contrato principal para integração com Fanvue.
+Exemplo oficial da Fanvue com OAuth 2.0 e chat API. É a referência principal para autenticação e endpoints.
 
 ### `ferramentas/PulseChatAI`
-- Projeto: `yaziradevteam/PulseChatAI`
-- Função: conversa, intent detection, lead scoring, RAG, CTA e reengajamento.
-- Uso: referência avançada de arquitetura conversacional.
-- Observação: revisar licença/termos antes de incorporar código ao seu próprio produto.
+Conversa no Telegram, intent detection, lead scoring, RAG, CTA e reengajamento. Usar como referência/serviço e revisar licença antes de incorporar código.
 
 ### `ferramentas/Telegram-Fanvue-Bot`
-- Projeto: `dnpix/telegram-fanvue-bot`
-- Função: bot oficial do Telegram com conversa, estado, rate limit e encaminhamento para Fanvue.
-- Uso: implementação mais simples para testar o caminho aquisição -> conversa -> CTA.
+Implementação mais simples para testar Telegram -> conversa -> CTA -> Fanvue usando Bot API.
 
 ## n8n
 
 ### `ferramentas/Awesome-n8n-Templates`
-- Projeto: `enescingoz/awesome-n8n-templates`
-- Função: biblioteca grande de workflows n8n.
-- Licença: CC BY 4.0.
-- Uso: fonte de peças; os workflows selecionados/adaptados ficam em `07-n8n/importable/`.
+Grande biblioteca de workflows n8n, sob CC BY 4.0. As peças selecionadas/adaptadas ficam em `07-n8n/importable/`.
 
 ---
 
 # Complementos
 
+## `complementos/ComfyUI-MultiGPU`
+Offload/distribuição de modelos entre GPUs/memória. Útil apenas em setups específicos e workflows pesados.
+
 ## `complementos/ComfyUI-Essentials-Legado`
-Projeto em modo de manutenção. Mantenha para compatibilidade com workflows que usem nodes antigos.
+Projeto em modo de manutenção. Fica para compatibilidade com workflows antigos.
 
 ## `complementos/ComfyUI-InstantID-Legado`
-InstantID nativo para ComfyUI, também em manutenção. Fallback para workflows específicos.
+InstantID para ComfyUI, também em manutenção. Fallback para workflows que exijam especificamente InstantID.
 
 ## `complementos/ComfyUI-Vidflows`
-Workflows completos de vídeo, narrativa e sequências. Bom banco de arquiteturas para estudar/recortar.
+Workflows completos de vídeo, narrativa e sequências. Banco de arquiteturas para estudar e reaproveitar.
 
 ## `complementos/ComfyUI-LivePortrait`
-Animação de retratos/expressões. Complemento para talking head e movimento facial.
+Animação de retratos/expressões; útil para talking head e movimento facial.
 
 ## `complementos/Biblioteca-ComfyUI-Workflows`
-Biblioteca gigante de grafos ComfyUI. Use como laboratório e referência de nodes/padrões.
+Biblioteca gigante de workflows para Flux, ControlNet, img2img, vídeo e outros padrões.
 
 ## `complementos/Fanvue-AI-Bot-RAG`
-Projeto com webhook Fanvue, RAG, pgvector, memória por usuário, LLM e administração por Telegram. Excelente referência para nossa camada de CRM/memória.
+Projeto de referência com webhook Fanvue, RAG, pgvector, memória por usuário, LLM e administração por Telegram.
 
 ---
 
 # Workflows e infraestrutura próprios do arsenal
-
-Além dos upstreams, este repositório já tem peças próprias/selecionadas:
 
 - `01-character-engine/workflows/img-sdxl-face.json` — gerar rosto-base de referência;
 - `07-n8n/importable/social/one-video-multiplatform-postwire.json` — publicação de um vídeo em múltiplas redes;
@@ -140,11 +128,15 @@ Além dos upstreams, este repositório já tem peças próprias/selecionadas:
 [Bíblia da personagem]
         |
         v
-[ComfyUI + PuLID-Flux]
+[ComfyUI + GGUF + PuLID-Flux]
         |
         +----> [imagem]
         |
         +----> [Wan / vídeo]
+                    |
+                    +--> VideoHelper
+                    +--> RIFE
+                    +--> MMAudio
         |
         v
 [Aprovação humana + assets]
@@ -177,7 +169,7 @@ Além dos upstreams, este repositório já tem peças próprias/selecionadas:
 
 ## Política de atualização
 
-Os submódulos ficam presos a commits específicos para o arsenal continuar reproduzível. Não atualize todos automaticamente em produção. Primeiro teste a nova versão, depois altere o commit apontado pelo submódulo.
+Os submódulos ficam presos a commits específicos para o arsenal continuar reproduzível. Não atualize todos automaticamente em produção: teste novas versões antes de alterar o commit apontado.
 
 ## Idioma
 
