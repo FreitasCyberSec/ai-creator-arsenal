@@ -1,70 +1,70 @@
-# AI Creator Arsenal
+# Arsenal de Criadores com IA
 
-Private-first toolkit for building a compliant AI creator operation with reusable components for consistent character generation, image/video pipelines, social publishing, Telegram/Fanvue automation, n8n orchestration, memory/CRM, analytics and infrastructure.
+Kit central para montar uma operação de criadores com IA de forma organizada, modular e reutilizável. O repositório reúne componentes para identidade visual consistente, geração de imagens e vídeos, publicação em redes sociais, automação com Telegram/Fanvue, orquestração com n8n, memória/CRM, analytics e infraestrutura.
 
-> **Repository status:** this repository is currently visible as **public** through the connected GitHub API. Keep secrets, credentials, private model assets, customer data and proprietary prompts OUT of this repository until visibility is changed to Private in GitHub Settings.
+> **Status do repositório:** neste momento ele aparece como **público** pela API conectada do GitHub. Não coloque segredos, credenciais, mídia privada, dados de clientes ou prompts proprietários aqui enquanto você não mudar a visibilidade para **Private** nas configurações do GitHub.
 
-## Architecture
+## Arquitetura
 
 ```text
-Character Bible / Identity
+Bíblia da Personagem / Identidade
         ↓
-ComfyUI / image + video generation
+ComfyUI / geração de imagem + vídeo
         ↓
-Human approval / content library
+Aprovação humana / biblioteca de conteúdo
         ↓
-n8n orchestration
+Orquestração com n8n
         ↓
-Postiz / platform APIs
+Postiz / APIs das plataformas
    ├─ Instagram
    ├─ TikTok
    ├─ X
    ├─ Reddit
    └─ Telegram
         ↓
-Telegram / Fanvue acquisition
+Aquisição via Telegram / Fanvue
         ↓
-AI conversation + memory + intent scoring
+Conversa com IA + memória + intenção
         ↓
-Offer / subscription / PPV
+Oferta / assinatura / PPV
         ↓
 CRM + analytics
         ↓
-Retention / re-engagement
+Retenção / reengajamento
 ```
 
-## Repository map
+## Mapa do repositório
 
-- `00-start-here/` — setup and operating notes
-- `01-character-engine/` — consistent-character workflows and identity tools
-- `02-image-video/` — image/video generation and transformation pipelines
-- `03-content-factory/` — approval and asset-processing workflows
-- `04-social-automation/` — Instagram/TikTok/X/Reddit publishing stack
-- `05-telegram/` — Telegram acquisition, conversation and re-engagement
-- `06-fanvue/` — Fanvue API/chat integrations
-- `07-n8n/` — importable n8n workflows and orchestration notes
-- `08-memory-crm/` — Supabase/Postgres/pgvector/RAG patterns
-- `09-analytics/` — attribution, events and KPI definitions
-- `10-infrastructure/` — deployment and environment examples
-- `90-upstreams/` — upstream catalog and bootstrap scripts
-- `99-licenses/` — license and attribution records
+- `00-start-here/` — início, instalação e modo de usar
+- `01-character-engine/` — identidade consistente e workflows de personagem
+- `02-image-video/` — geração e transformação de imagens/vídeos
+- `03-content-factory/` — aprovação, organização e processamento de conteúdo
+- `04-social-automation/` — automação de Instagram/TikTok/X/Reddit
+- `05-telegram/` — aquisição, conversa e reengajamento no Telegram
+- `06-fanvue/` — integrações de API/chat da Fanvue
+- `07-n8n/` — workflows importáveis e orquestração
+- `08-memory-crm/` — Supabase/Postgres/pgvector/RAG e memória
+- `09-analytics/` — eventos, atribuição e métricas
+- `10-infrastructure/` — infraestrutura e exemplos de deploy
+- `90-upstreams/` — catálogo dos projetos externos e scripts de bootstrap
+- `99-licenses/` — licenças e créditos dos projetos usados
 
-## Initial priority stack
+## Stack inicial prioritário
 
-1. **SciensOne/comfyui-workflow-generator** — consistent-character photosets + image-to-video workflows; permissive MIT license.
-2. **Postiz** — multi-platform social publishing; run as an isolated external AGPL service.
-3. **Fanvue official chatbot example** — API/OAuth reference; reference-only until redistribution terms are clear.
-4. **PulseChatAI** — Telegram conversational funnel/lead scoring reference; reference-only because the repository currently exposes no license.
-5. **n8n workflow libraries** — source pool for reusable orchestration after license review.
-6. **Supabase/Postgres/pgvector** — memory, state, attribution and CRM layer.
+1. **SciensOne/comfyui-workflow-generator** — geração consistente de personagem e workflows de imagem/vídeo; licença MIT.
+2. **Postiz** — publicação em múltiplas redes sociais; deve rodar como serviço externo isolado por causa da licença AGPL.
+3. **Exemplo oficial de chatbot da Fanvue** — referência oficial de API/OAuth.
+4. **PulseChatAI** — referência de funil conversacional, intenção e lead scoring no Telegram.
+5. **Bibliotecas de workflows n8n** — fonte de automações reaproveitáveis.
+6. **Supabase/Postgres/pgvector** — memória, estado, atribuição e CRM.
 
-## Rules
+## Regras do arsenal
 
-- Never commit `.env`, API keys, session cookies, auth tokens, user/customer data or private media.
-- Only copy third-party code when its license permits redistribution and attribution requirements are preserved.
-- Keep AGPL/copy-left applications isolated as services unless you deliberately accept their licensing obligations.
-- Repositories without an explicit license are **reference-only**.
-- Use face/identity transformation only for consenting adults and assets you are authorized to use.
-- Use official platform APIs/approved automation where available; do not build account-evasion or unsolicited-spam tooling.
+- Nunca commitar `.env`, chaves de API, cookies de sessão, tokens, dados de clientes ou mídia privada.
+- Só copiar código de terceiros quando a licença permitir e mantendo os créditos exigidos.
+- Aplicações AGPL/copy-left devem ficar isoladas como serviços, a menos que você decida conscientemente aceitar as obrigações da licença.
+- Repositórios sem licença explícita ficam como **referência**, não como código incorporado.
+- Transformação de rosto/voz/identidade deve usar apenas pessoas adultas que tenham autorizado o uso e a transformação do conteúdo.
+- Preferir APIs oficiais e automações aprovadas pelas plataformas.
 
-See `00-start-here/START.md` and `90-upstreams/ARSENAL.md` next.
+Comece por `00-start-here/START.md` e depois veja `90-upstreams/ARSENAL.md`.
