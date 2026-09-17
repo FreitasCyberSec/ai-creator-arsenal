@@ -29,6 +29,7 @@ clone_or_update() {
 # Núcleo ComfyUI
 clone_or_update "https://github.com/Comfy-Org/ComfyUI.git" "ComfyUI"
 clone_or_update "https://github.com/Comfy-Org/ComfyUI-Manager.git" "ComfyUI-Manager"
+clone_or_update "https://github.com/city96/ComfyUI-GGUF.git" "ComfyUI-GGUF"
 
 # Identidade / consistência facial
 clone_or_update "https://github.com/balazik/ComfyUI-PuLID-Flux.git" "ComfyUI-PuLID-Flux"
@@ -38,9 +39,12 @@ clone_or_update "https://github.com/facefusion/facefusion.git" "facefusion"
 clone_or_update "https://github.com/SciensOne/comfyui-workflow-generator.git" "comfyui-workflow-generator"
 clone_or_update "https://github.com/kijai/ComfyUI-WanVideoWrapper.git" "ComfyUI-WanVideoWrapper"
 clone_or_update "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git" "ComfyUI-VideoHelperSuite"
+clone_or_update "https://github.com/kijai/ComfyUI-MMAudio.git" "ComfyUI-MMAudio"
+clone_or_update "https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git" "ComfyUI-Frame-Interpolation"
 clone_or_update "https://github.com/iqgeoai/ComfyUI-vidflows.git" "ComfyUI-vidflows"
 clone_or_update "https://github.com/kijai/ComfyUI-LivePortraitKJ.git" "ComfyUI-LivePortraitKJ"
 clone_or_update "https://github.com/yaiol/comfyui-workflows.git" "comfyui-workflows-library"
+clone_or_update "https://github.com/neuratech-ai/ComfyUI-MultiGPU.git" "ComfyUI-MultiGPU-opcional"
 
 # Legados úteis como fallback/referência
 clone_or_update "https://github.com/cubiq/ComfyUI_essentials.git" "ComfyUI_essentials-legado"
