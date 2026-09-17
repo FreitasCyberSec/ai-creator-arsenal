@@ -18,7 +18,7 @@
       ],
       "properties": {"Node name for S&R": "CheckpointLoaderSimple"},
       "widgets_values": ["YOUR_CHECKPOINT.safetensors"],
-      "title": "Checkpoint",
+      "title": "Modelo / Checkpoint",
       "color": "#222",
       "bgcolor": "#333"
     },
@@ -50,7 +50,7 @@
       "outputs": [{"name": "CONDITIONING", "type": "CONDITIONING", "links": [6], "slot_index": 0}],
       "properties": {"Node name for S&R": "CLIPTextEncode"},
       "widgets_values": ["a photo of <your subject>, <describe scene>"],
-      "title": "Positive",
+      "title": "Prompt positivo",
       "color": "#3a3",
       "bgcolor": "#243"
     },
@@ -66,7 +66,7 @@
       "outputs": [{"name": "CONDITIONING", "type": "CONDITIONING", "links": [7], "slot_index": 0}],
       "properties": {"Node name for S&R": "CLIPTextEncode"},
       "widgets_values": ["low quality, blurry, deformed"],
-      "title": "Negative",
+      "title": "Prompt negativo",
       "color": "#a33",
       "bgcolor": "#322"
     },
@@ -82,7 +82,7 @@
       "outputs": [{"name": "LATENT", "type": "LATENT", "links": [8], "slot_index": 0}],
       "properties": {"Node name for S&R": "EmptyLatentImage"},
       "widgets_values": [1024, 1024, 4],
-      "title": "Latent 1024x1024 x4 candidates",
+      "title": "Latente 1024x1024 - 4 candidatos",
       "color": "#222",
       "bgcolor": "#333"
     },
@@ -103,7 +103,7 @@
       "outputs": [{"name": "LATENT", "type": "LATENT", "links": [9], "slot_index": 0}],
       "properties": {"Node name for S&R": "KSampler"},
       "widgets_values": [0, "randomize", 30, 4.0, "dpmpp_3m_sde_gpu", "karras", 1.0],
-      "title": "Sampler (dpmpp_3m_sde_gpu/karras/30/cfg4)",
+      "title": "Amostrador (dpmpp_3m_sde_gpu/karras/30/cfg4)",
       "color": "#222",
       "bgcolor": "#333"
     },
@@ -122,7 +122,7 @@
       "outputs": [{"name": "IMAGE", "type": "IMAGE", "links": [10], "slot_index": 0}],
       "properties": {"Node name for S&R": "VAEDecode"},
       "widgets_values": [],
-      "title": "Decode",
+      "title": "Decodificar imagem",
       "color": "#222",
       "bgcolor": "#333"
     },
@@ -138,7 +138,7 @@
       "outputs": [],
       "properties": {"Node name for S&R": "SaveImage"},
       "widgets_values": ["Face/face"],
-      "title": "Save Faces",
+      "title": "Salvar rostos",
       "color": "#322",
       "bgcolor": "#533"
     },
@@ -152,9 +152,9 @@
       "mode": 0,
       "inputs": [],
       "outputs": [],
-      "title": "How to use",
+      "title": "Como usar",
       "properties": {},
-      "widgets_values": ["## Face generator (reference for identity-lock)\nProduces **4 frontal headshot candidates per Queue** (`Face/face_####`). Pick the cleanest, most front-on result and use it as the reference face in your identity-lock (e.g. PuLID) workflow.\nEdit the **Positive** prompt to define your character's look. 1024x1024, CLIP skip 2, baked VAE.\nTip: an evenly-lit, straight-on face with a neutral expression gives the strongest identity lock."],
+      "widgets_values": ["## Gerador de rosto para referência de identidade\nGera **4 candidatos de rosto frontal por execução** (`Face/face_####`). Escolha o resultado mais limpo, frontal e bem iluminado para usar como referência no workflow de identidade (por exemplo PuLID).\nEdite o **Prompt positivo** para definir a aparência da personagem. O texto-base do prompt está em inglês por compatibilidade com os modelos.\nDica: rosto reto, expressão neutra e iluminação uniforme normalmente dão uma trava de identidade mais forte."],
       "color": "#432",
       "bgcolor": "#653"
     }
@@ -173,7 +173,7 @@
   ],
   "groups": [
     {
-      "title": "Face generator (identity reference)",
+      "title": "Gerador de rosto - referência de identidade",
       "bounding": [20, 20, 2040, 560],
       "color": "#7a4fa1",
       "font_size": 22,
