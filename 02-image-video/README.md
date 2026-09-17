@@ -1,46 +1,46 @@
-# Image & Video Arsenal
+# Arsenal de Imagem e Vídeo
 
-## Primary production path
+## Caminho principal de produção
 
 ```text
-approved identity reference
-  -> still-image consistency workflow
-  -> batch generation
-  -> quality review
-  -> approved hero frames
-  -> image-to-video workflow
-  -> temporal consistency review
-  -> optional voice/lip-sync
-  -> export approved asset
+referência de identidade aprovada
+  -> workflow de consistência em imagem
+  -> geração em lote
+  -> revisão de qualidade
+  -> escolha dos melhores frames
+  -> workflow image-to-video
+  -> revisão de consistência temporal
+  -> voz/lip-sync opcional
+  -> exportar asset aprovado
 ```
 
-## Upstreams pulled by bootstrap
+## Projetos externos puxados pelo bootstrap
 
 ### ComfyUI Workflow Generator
 `external/comfyui-workflow-generator/`
 
-Use for repeatable character workflows and parameterized generation. The upstream includes examples for face generation, FLUX/SDXL image generation and long-form/video workflows.
+Use para workflows repetíveis de personagem e geração parametrizada. O upstream inclui exemplos para geração de rosto, imagens com FLUX/SDXL e workflows de vídeo.
 
 ### ComfyUI Vidflows
 `external/ComfyUI-vidflows/`
 
-Use as a production reference for image-to-video and multi-scene character video pipelines.
+Use como referência de produção para image-to-video e pipelines com múltiplas cenas mantendo a personagem consistente.
 
-### ComfyUI workflow library
+### Biblioteca de workflows ComfyUI
 `external/comfyui-workflows-library/`
 
-Large research library. Good for discovering graph patterns; do not assume every workflow has the same dependency/license quality.
+Grande biblioteca de pesquisa. É útil para descobrir padrões de grafo e técnicas, mas não assuma que todo workflow possui a mesma qualidade de dependências/licenças.
 
 ### FaceFusion
 `external/facefusion/`
 
-Dedicated face-processing application. Keep it isolated from the core orchestrator and use only with identities/assets you are authorized to transform.
+Ferramenta dedicada de processamento de rosto. Mantenha separada do orquestrador principal e use somente com identidades/assets que você tenha autorização para transformar.
 
-## Production notes
+## Boas práticas de produção
 
-- Save workflow JSON with every generated batch.
-- Record model/checkpoint versions, seed and prompt version.
-- Do not overwrite the canonical identity reference; version it (`v1`, `v2`, ...).
-- Maintain separate presets for portrait, full-body, lifestyle and video keyframes.
-- Approve still consistency before investing compute in video.
-- Store generated media outside Git; only metadata/workflows belong in this repository.
+- Salve o JSON do workflow usado em cada lote gerado.
+- Registre versões de modelo/checkpoint, seed e versão do prompt.
+- Não sobrescreva a referência canônica da personagem; versione como `v1`, `v2`, etc.
+- Tenha presets separados para retrato, corpo inteiro, lifestyle e frames de vídeo.
+- Aprove a consistência das imagens antes de gastar GPU com vídeo.
+- Armazene mídia gerada fora do Git; no repositório ficam metadados, configurações e workflows.
