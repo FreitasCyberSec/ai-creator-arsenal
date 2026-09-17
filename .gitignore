@@ -9,6 +9,9 @@
 secrets/
 credentials/
 
+# External upstream clones (pulled by bootstrap scripts)
+external/
+
 # Python
 __pycache__/
 *.py[cod]
