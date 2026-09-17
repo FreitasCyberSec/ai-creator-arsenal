@@ -1,35 +1,35 @@
-# Telegram Layer
+# Arquitetura do Telegram
 
-Telegram can be used as an owned conversation/CRM layer between acquisition and the monetization platform.
+O Telegram pode funcionar como uma camada própria de conversa/CRM entre aquisição e monetização.
 
-## Recommended flow
+## Fluxo recomendado
 
 ```text
-tracked link
-   -> /start payload
-   -> consent / age gate if required
-   -> identify creator + campaign + click_id
-   -> create/update contact
-   -> conversational AI
-   -> intent + lead score
-   -> cold / warm / hot state
-   -> CTA when appropriate
-   -> Fanvue / approved monetization destination
-   -> purchase/subscription event
-   -> update CRM
-   -> retention / re-engagement
+link rastreado
+   -> payload no /start
+   -> consentimento / verificação 18+ quando necessário
+   -> identificar creator + campaign + click_id
+   -> criar/atualizar contato
+   -> IA conversacional
+   -> intenção + lead score
+   -> cold / warm / hot
+   -> CTA quando fizer sentido
+   -> Fanvue / destino de monetização aprovado
+   -> evento de compra/assinatura
+   -> atualizar CRM
+   -> retenção / reengajamento
 ```
 
-## State model
+## Modelo de estados
 
-- `cold`: new/low intent; conversation first.
-- `warm`: engaged, returning, asks questions, reacts to content.
-- `hot`: clear purchase/subscription intent; CTA allowed.
-- `buyer`: confirmed paid event.
-- `vip`: high-value/repeat buyer rule reached.
-- `churned`: previously active/buyer, now inactive according to your policy.
+- `cold`: lead novo ou com pouco interesse; priorizar conversa.
+- `warm`: engajado, retorna, pergunta e reage ao conteúdo.
+- `hot`: demonstra intenção clara de compra/assinatura; CTA permitido.
+- `buyer`: compra confirmada.
+- `vip`: comprador recorrente ou de alto valor conforme sua regra.
+- `churned`: anteriormente ativo/comprador, mas agora inativo segundo sua política.
 
-## Core data to preserve from the first click
+## Dados que devem ser preservados desde o primeiro clique
 
 - `creator_id`
 - `telegram_chat_id`
@@ -40,13 +40,13 @@ tracked link
 - `geo`
 - `language`
 
-Never lose the attribution fields when the conversation moves between systems.
+Não perca os dados de atribuição quando o usuário mudar de sistema ou canal.
 
-## AI responsibilities
+## Responsabilidade da IA
 
-The conversational model should not control billing or source-of-truth customer state. It can propose an action, but n8n/CRM should decide whether the action is allowed.
+O modelo conversacional não deve controlar diretamente cobrança nem ser a fonte de verdade do estado do cliente. A IA pode propor uma ação; o n8n/CRM decide se a ação é permitida.
 
-Example decision contract:
+Exemplo de contrato de decisão:
 
 ```json
 {
@@ -55,16 +55,16 @@ Example decision contract:
   "score_delta": 8,
   "next_action": "continue_chat",
   "cta_allowed": false,
-  "memory_candidates": ["prefers short messages"]
+  "memory_candidates": ["prefere mensagens curtas"]
 }
 ```
 
-Later stages can return `next_action: offer`, `wait`, `reengage`, or `handoff`.
+Em etapas posteriores, `next_action` pode virar `offer`, `wait`, `reengage` ou `handoff`.
 
-## Useful upstream references
+## Referências úteis
 
-- `yaziradevteam/PulseChatAI` — intent/lead scoring/CTA timing architecture.
-- `dnpix/telegram-fanvue-bot` — Telegram -> Fanvue bridge flow.
-- `enescingoz/awesome-n8n-templates` — Telegram AI workflows, including Supabase memory patterns.
+- `yaziradevteam/PulseChatAI` — intenção, lead scoring e momento de CTA.
+- `dnpix/telegram-fanvue-bot` — fluxo de ponte Telegram -> Fanvue.
+- `enescingoz/awesome-n8n-templates` — workflows de Telegram com IA e memória em Supabase.
 
-Use only authorized, opt-in messaging. Do not use this layer for unsolicited mass messaging or platform/account evasion.
+Use apenas mensagens autorizadas/opt-in. Não use esta camada para disparo em massa não solicitado nem para evasão de plataforma/conta.
