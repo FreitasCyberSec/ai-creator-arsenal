@@ -12,26 +12,28 @@ $repos = @(
   # Núcleo ComfyUI
   @{ Url = 'https://github.com/Comfy-Org/ComfyUI.git'; Dir = 'ComfyUI' },
   @{ Url = 'https://github.com/Comfy-Org/ComfyUI-Manager.git'; Dir = 'ComfyUI-Manager' },
-  @{ Url = 'https://github.com/cubiq/ComfyUI_essentials.git'; Dir = 'ComfyUI_essentials' },
 
   # Identidade / consistência facial
-  @{ Url = 'https://github.com/cubiq/ComfyUI_InstantID.git'; Dir = 'ComfyUI_InstantID' },
-  @{ Url = 'https://github.com/cubiq/PuLID_ComfyUI.git'; Dir = 'PuLID_ComfyUI' },
+  @{ Url = 'https://github.com/balazik/ComfyUI-PuLID-Flux.git'; Dir = 'ComfyUI-PuLID-Flux' },
   @{ Url = 'https://github.com/facefusion/facefusion.git'; Dir = 'facefusion' },
 
   # Imagem / vídeo
   @{ Url = 'https://github.com/SciensOne/comfyui-workflow-generator.git'; Dir = 'comfyui-workflow-generator' },
-  @{ Url = 'https://github.com/iqgeoai/ComfyUI-vidflows.git'; Dir = 'ComfyUI-vidflows' },
   @{ Url = 'https://github.com/kijai/ComfyUI-WanVideoWrapper.git'; Dir = 'ComfyUI-WanVideoWrapper' },
   @{ Url = 'https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git'; Dir = 'ComfyUI-VideoHelperSuite' },
+  @{ Url = 'https://github.com/iqgeoai/ComfyUI-vidflows.git'; Dir = 'ComfyUI-vidflows' },
   @{ Url = 'https://github.com/kijai/ComfyUI-LivePortraitKJ.git'; Dir = 'ComfyUI-LivePortraitKJ' },
   @{ Url = 'https://github.com/yaiol/comfyui-workflows.git'; Dir = 'comfyui-workflows-library' },
+
+  # Legados úteis como fallback/referência
+  @{ Url = 'https://github.com/cubiq/ComfyUI_essentials.git'; Dir = 'ComfyUI_essentials-legado' },
+  @{ Url = 'https://github.com/cubiq/ComfyUI_InstantID.git'; Dir = 'ComfyUI_InstantID-legado' },
 
   # Conversa / Telegram / Fanvue
   @{ Url = 'https://github.com/yaziradevteam/PulseChatAI.git'; Dir = 'PulseChatAI-reference' },
   @{ Url = 'https://github.com/dnpix/telegram-fanvue-bot.git'; Dir = 'telegram-fanvue-bot-reference' },
-  @{ Url = 'https://github.com/fanvue/fanvue-chatbot-example.git'; Dir = 'fanvue-chatbot-official-reference' },
-  @{ Url = 'https://github.com/LehaDeev/fanvue_ai_bot.git'; Dir = 'fanvue-ai-bot-reference' },
+  @{ Url = 'https://github.com/fanvue/fanvue-chatbot-example.git'; Dir = 'fanvue-chatbot-oficial' },
+  @{ Url = 'https://github.com/LehaDeev/fanvue_ai_bot.git'; Dir = 'fanvue-ai-bot-rag-reference' },
 
   # Publicação / automação
   @{ Url = 'https://github.com/gitroomhq/postiz-app.git'; Dir = 'postiz' },
@@ -56,5 +58,5 @@ foreach ($repo in $repos) {
 }
 
 Write-Host "`nArsenal externo pronto em: $external"
-Write-Host 'Próximo passo: leia 00-start-here/START.md e 90-upstreams/ARSENAL.md.'
+Write-Host 'Preferência: use os submódulos de ferramentas/ e complementos/; este script serve para uma cópia independente dos upstreams.'
 Write-Host 'Importante: modelos/checkpoints grandes não são baixados automaticamente.'
